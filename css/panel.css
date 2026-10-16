@@ -1,63 +1,185 @@
-/* Date at the top, the dial in the middle, calendar and progress below. */
+/* A phone layout of its own: the date on top, a round dial read at 12 o'clock,
+   and two widget-sized tiles. The bottom is left clear for the Lock Screen's
+   flashlight, notifications and camera. */
 main {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  padding: calc(var(--safe-top) + 20px) calc(var(--safe-right) + 28px) calc(var(--safe-bottom) + 22px)
-    calc(var(--safe-left) + 28px);
+  padding: calc(var(--safe-top) + 18px) calc(var(--safe-right) + 20px) calc(var(--safe-bottom) + 76px)
+    calc(var(--safe-left) + 20px);
+}
+
+/* --- Date ----------------------------------------------------------------- */
+
+.today-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 4px;
 }
 
 .today-header .weekday {
-  font-size: 46px;
+  font-size: 38px;
 }
 
 .today-header .full-date {
-  margin-top: 8px;
-  font-size: 17px;
+  margin-top: 6px;
+  font-size: 15px;
 }
 
-/* The dial's center sits on the screen's left edge, halfway down this area. */
+.week {
+  margin-top: 6px;
+  padding: 5px 10px;
+  border: 1px solid rgb(255 255 255 / 0.16);
+  border-radius: 999px;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--fg-soft);
+}
+
+/* --- Dial ------------------------------------------------------------------ */
+
 .dial-area {
   position: relative;
-  margin-left: calc(-28px - var(--safe-left));
 }
 
+/* panel.js places the center and sets the scale. */
 .dial {
-  left: 6px;
-  top: 50%;
+  left: 50%;
 }
 
 .rings {
-  /* A tighter fade than the full clock, so the rings clear the date above
-     and the calendar below. */
+  /* Fully drawn across the top, fading out down the sides. */
   --fade: conic-gradient(
     from 0deg at 50% 50%,
-    transparent 42deg,
-    rgb(0 0 0 / 0.3) 58deg,
-    #000 74deg,
-    #000 106deg,
-    rgb(0 0 0 / 0.3) 122deg,
-    transparent 138deg
+    #000 0deg,
+    #000 62deg,
+    rgb(0 0 0 / 0.3) 100deg,
+    transparent 128deg,
+    transparent 232deg,
+    rgb(0 0 0 / 0.3) 260deg,
+    #000 298deg,
+    #000 360deg
   );
+}
+
+.ring {
+  --label-size: 25px;
+  --active-scale: 1.6;
 }
 
 .hour {
   position: absolute;
-  left: 3px;
+  left: 0;
   top: 0;
-  translate: 0 -50%;
-  font-size: 108px;
+  translate: -50% -50%;
+  font-size: 150px;
+  font-weight: 200;
 }
 
-.panel {
-  font-size: 13px;
+/* --- Tiles -------------------------------------------------------------------- */
+
+.tiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.tile {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 12px 12px;
+  border-radius: 24px;
+  background: rgb(255 255 255 / 0.07);
+}
+
+.tile-title {
+  padding: 0 4px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--muted);
 }
 
 .calendar-grid {
-  row-gap: 12px;
-  margin-top: 14px;
+  flex: 1;
+  margin-top: 8px;
+  grid-auto-rows: 1fr;
+  align-items: center;
+  font-size: 11.5px;
 }
 
-.progress {
-  gap: 12px;
-  margin-top: 24px;
+.calendar-head {
+  font-size: 10px;
+}
+
+.calendar-grid .today {
+  min-width: 1.9em;
+  margin: 0;
+  padding: 0.3em 0;
+}
+
+/* Day, month and year as concentric rings, filling clockwise from the top. */
+.progress-tile {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.progress-rings {
+  width: 68%;
+  rotate: -90deg;
+}
+
+.progress-rings circle {
+  cx: 50px;
+  cy: 50px;
+  fill: none;
+  stroke-width: 7;
+}
+
+.progress-rings .track {
+  stroke: rgb(255 255 255 / 0.1);
+}
+
+.progress-rings .fill {
+  stroke-linecap: round;
+  stroke-dasharray: 0 100;
+  transition: stroke-dasharray 900ms ease;
+}
+
+.progress-rings [data-ring='day'] {
+  stroke: var(--fg);
+}
+
+.progress-rings [data-ring='month'] {
+  stroke: #b4b4b4;
+}
+
+.progress-rings [data-ring='year'] {
+  stroke: #707070;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+.legend dt {
+  font-size: 8.5px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+}
+
+.legend dd {
+  margin: 3px 0 0;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-rings .fill {
+    transition: none;
+  }
 }

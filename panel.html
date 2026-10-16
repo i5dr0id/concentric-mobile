@@ -22,8 +22,11 @@
   <body data-page="panel">
     <main>
       <header class="today-header">
-        <div class="weekday"></div>
-        <div class="full-date"></div>
+        <div>
+          <div class="weekday"></div>
+          <div class="full-date"></div>
+        </div>
+        <div class="week"></div>
       </header>
 
       <div class="dial-area">
@@ -33,25 +36,28 @@
         </div>
       </div>
 
-      <footer class="panel">
-        <section class="calendar">
-          <div class="calendar-title"></div>
+      <div class="tiles">
+        <section class="tile calendar">
+          <div class="tile-title calendar-title"></div>
           <div class="calendar-grid"></div>
         </section>
 
-        <section class="progress">
-          <div class="progress-row">
-            <span>DAY</span>
-            <div class="bar"><div class="bar-fill" data-progress="day"></div></div>
-            <span data-label="day"></span>
-          </div>
-          <div class="progress-row">
-            <span>YEAR</span>
-            <div class="bar"><div class="bar-fill" data-progress="year"></div></div>
-            <span data-label="year"></span>
-          </div>
+        <section class="tile progress-tile" aria-label="Progress">
+          <svg class="progress-rings" viewBox="0 0 100 100" aria-hidden="true">
+            <circle class="track" r="44" />
+            <circle class="fill" data-ring="day" r="44" pathLength="100" />
+            <circle class="track" r="33" />
+            <circle class="fill" data-ring="month" r="33" pathLength="100" />
+            <circle class="track" r="22" />
+            <circle class="fill" data-ring="year" r="22" pathLength="100" />
+          </svg>
+          <dl class="legend">
+            <div><dt>DAY</dt><dd data-label="day"></dd></div>
+            <div><dt>MONTH</dt><dd data-label="month"></dd></div>
+            <div><dt>YEAR</dt><dd data-label="year"></dd></div>
+          </dl>
         </section>
-      </footer>
+      </div>
     </main>
 
     <nav class="nav" aria-label="Pages">
