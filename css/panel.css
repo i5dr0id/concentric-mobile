@@ -66,11 +66,13 @@ main {
   --active-scale: 1.6;
 }
 
+/* Raised inside the arch: the dial sits so low that its center is near the
+   bottom of the screen. */
 .hour {
   position: absolute;
   left: 0;
   top: 0;
-  translate: -50% -50%;
+  translate: -50% -88%;
   font-size: 150px;
   font-weight: 200;
 }

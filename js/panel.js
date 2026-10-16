@@ -65,7 +65,7 @@ function isoWeek(date) {
 // The dial is as large as the space under the tiles allows. Only its upper
 // part is drawn fully, so it can run past the screen's sides, and it sits low,
 // its center near the bottom so the top of the rings rises toward the tiles.
-const VISIBLE_BELOW = 0.32 // share of the radius showing below the center
+const VISIBLE_BELOW = 0.12 // share of the radius showing below the center
 
 function fit() {
   const area = $('.dial-area').getBoundingClientRect()
