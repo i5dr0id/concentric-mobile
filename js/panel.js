@@ -1,7 +1,7 @@
 // Panel page: the dial between today's date and a calendar with day and year
 // progress, laid out for a phone held upright.
 
-const { $, pad, createRing, setRing, sweep, everySecond, onResize, viewport, dayOfYear, daysInYear, renderCalendar } =
+const { $, pad, createRing, setRing, sweep, everySecond, onResize, dayOfYear, daysInYear, renderCalendar } =
   Concentric
 
 const MINUTES = { labelRadius: 178, tickRadius: 202 }
@@ -36,7 +36,7 @@ everySecond((now) => {
 // and calendar leave. Refit once the web font arrives, as it changes that.
 function fit() {
   const area = $('.dial-area').getBoundingClientRect()
-  const scale = Math.min(viewport().width * 0.94, area.height / 2 / VISIBLE_HEIGHT) / OUTER_RADIUS
+  const scale = Math.min(innerWidth * 0.94, area.height / 2 / VISIBLE_HEIGHT) / OUTER_RADIUS
   $('.dial').style.scale = scale
 }
 

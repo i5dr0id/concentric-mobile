@@ -1,7 +1,7 @@
 // Horizon page: a large hour over two arcs, the minutes above the seconds,
 // both read at the top center.
 
-const { $, pad, createRing, setRing, sweep, everySecond, onResize, viewport } = Concentric
+const { $, pad, createRing, setRing, sweep, everySecond, onResize } = Concentric
 
 // Design units on a 393px-wide phone (iPhone 15 Pro). The circles are wide
 // enough that neighbouring labels sit about 55px apart along the arc.
@@ -32,9 +32,8 @@ $('.rings').append(minutes.el, seconds.el)
 // Scales with the shorter side, so turning the phone shows more of the arcs
 // rather than blowing them up.
 onResize(() => {
-  const { width, height } = viewport()
-  const scale = Math.min(width, height) / DESIGN_WIDTH
-  const peak = height * READING_LINE
+  const scale = Math.min(innerWidth, innerHeight) / DESIGN_WIDTH
+  const peak = innerHeight * READING_LINE
   $('main').style.setProperty('--scale', scale)
   const dial = $('.dial')
   dial.style.scale = scale

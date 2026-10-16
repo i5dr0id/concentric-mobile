@@ -39,14 +39,9 @@ body {
   touch-action: manipulation;
 }
 
-/* Sized by concentric.js, which knows when iOS reports the screen as shorter
-   than it is. */
 main {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--app-height, 100%);
+  inset: 0;
   overflow: hidden;
 }
 
@@ -225,8 +220,7 @@ main {
 .nav {
   position: fixed;
   left: 50%;
-  /* Measured from the top so it follows main's corrected height. */
-  top: calc(var(--app-height, 100vh) - var(--safe-bottom) - 60px);
+  bottom: calc(var(--safe-bottom) + 18px);
   translate: -50% 12px;
   display: flex;
   gap: 4px;

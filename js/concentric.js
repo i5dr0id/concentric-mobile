@@ -121,26 +121,6 @@ const Concentric = (() => {
     run()
   }
 
-  /**
-   * The size the page fills. A Home Screen web app on iOS that draws under the
-   * status bar can lay out shorter than the screen, leaving an empty band at
-   * the bottom, so there the full screen height is used instead.
-   */
-  function viewport() {
-    const width = innerWidth
-    let height = innerHeight
-    if (navigator.standalone) {
-      const long = Math.max(screen.width, screen.height)
-      const short = Math.min(screen.width, screen.height)
-      height = Math.max(height, width < height ? long : short)
-    }
-    return { width, height }
-  }
-
-  function fillScreen() {
-    document.documentElement.style.setProperty('--app-height', `${viewport().height}px`)
-  }
-
   /** Calls `fn()` now and whenever the viewport changes size or rotates. */
   function onResize(fn) {
     fn()
@@ -221,9 +201,6 @@ const Concentric = (() => {
   }
 
   function start() {
-    fillScreen()
-    addEventListener('resize', fillScreen)
-    visualViewport?.addEventListener('resize', fillScreen)
     setUpNav()
     keepAwake()
     addEventListener('pointerdown', keepAwake)
@@ -245,7 +222,6 @@ const Concentric = (() => {
     sweep,
     everySecond,
     onResize,
-    viewport,
     dayOfYear,
     daysInYear,
     renderCalendar,
