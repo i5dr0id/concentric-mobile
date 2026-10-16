@@ -1,0 +1,81 @@
+/* The rings are huge circles centered below the screen, so only the top of
+   each shows, as a gentle arc under a large hour. horizon.js sets --scale and
+   places the dial. */
+main {
+  --scale: 1;
+}
+
+.date {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--safe-top) + 7vh);
+  translate: -50% 0;
+  display: flex;
+  gap: 0.9em;
+  font-size: calc(13px * var(--scale));
+  letter-spacing: 0.26em;
+  color: var(--fg-soft);
+  white-space: nowrap;
+}
+
+.weekday-name {
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.dot {
+  color: var(--muted);
+}
+
+.hour {
+  position: absolute;
+  left: 50%;
+  top: 36%;
+  translate: -50% -50%;
+  font-size: calc(190px * var(--scale));
+  font-weight: 200;
+  letter-spacing: -0.03em;
+}
+
+/* Fade the arcs out toward both sides and the bottom of the screen. */
+.arcs {
+  position: absolute;
+  inset: 0;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent, #000 28%, #000 72%, transparent),
+    linear-gradient(to bottom, #000 72%, transparent 92%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent, #000 28%, #000 72%, transparent),
+    linear-gradient(to bottom, #000 72%, transparent 92%);
+  mask-composite: intersect;
+}
+
+.dial {
+  left: 50%;
+}
+
+/* The arcs are far bigger than the 1000px fade box; the .arcs mask fades them. */
+.rings {
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.minutes {
+  --label-size: 24px;
+  --active-scale: 1.7;
+}
+
+.seconds {
+  --label-size: 17px;
+}
+
+/* A thin line down from the reading point, through both arcs. */
+.marker {
+  position: absolute;
+  left: 50%;
+  width: 1px;
+  height: calc(150px * var(--scale));
+  background: linear-gradient(to bottom, var(--fg-soft), transparent);
+  opacity: 0.5;
+}

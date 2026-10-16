@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Concentric Mobile</title>
+    <meta name="description" content="A concentric ring clock for iPhone, as a home screen web app." />
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon-180.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200..600&display=swap" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/index.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Concentric</h1>
+      <p class="lead">Pick a face, then add it to your Home Screen.</p>
+
+      <ul class="faces">
+        <li>
+          <a href="panel.html">
+            <span class="face-name">Panel</span>
+            <span class="face-note">Dial, date, calendar and progress</span>
+          </a>
+        </li>
+        <li>
+          <a href="clock.html">
+            <span class="face-name">Clock</span>
+            <span class="face-note">Just the dial, edge to edge</span>
+          </a>
+        </li>
+        <li>
+          <a href="horizon.html">
+            <span class="face-name">Horizon</span>
+            <span class="face-note">A large hour over two arcs</span>
+          </a>
+        </li>
+      </ul>
+
+      <ol class="steps">
+        <li>Open a face in Safari.</li>
+        <li>Tap Share, then <b>Add to Home Screen</b>.</li>
+        <li>Open it from the Home Screen: it runs full screen, offline, and keeps the screen on.</li>
+        <li>Tap the clock to switch faces.</li>
+      </ol>
+    </main>
+
+    <script>
+      if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+        navigator.serviceWorker.register('sw.js').catch(() => {})
+      }
+    </script>
+  </body>
+</html>

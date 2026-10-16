@@ -1,0 +1,63 @@
+/* Date at the top, the dial in the middle, calendar and progress below. */
+main {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: calc(var(--safe-top) + 20px) calc(var(--safe-right) + 28px) calc(var(--safe-bottom) + 22px)
+    calc(var(--safe-left) + 28px);
+}
+
+.today-header .weekday {
+  font-size: 46px;
+}
+
+.today-header .full-date {
+  margin-top: 8px;
+  font-size: 17px;
+}
+
+/* The dial's center sits on the screen's left edge, halfway down this area. */
+.dial-area {
+  position: relative;
+  margin-left: calc(-28px - var(--safe-left));
+}
+
+.dial {
+  left: 6px;
+  top: 50%;
+}
+
+.rings {
+  /* A tighter fade than the full clock, so the rings clear the date above
+     and the calendar below. */
+  --fade: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 42deg,
+    rgb(0 0 0 / 0.3) 58deg,
+    #000 74deg,
+    #000 106deg,
+    rgb(0 0 0 / 0.3) 122deg,
+    transparent 138deg
+  );
+}
+
+.hour {
+  position: absolute;
+  left: 3px;
+  top: 0;
+  translate: 0 -50%;
+  font-size: 108px;
+}
+
+.panel {
+  font-size: 13px;
+}
+
+.calendar-grid {
+  row-gap: 12px;
+  margin-top: 14px;
+}
+
+.progress {
+  gap: 12px;
+  margin-top: 24px;
+}

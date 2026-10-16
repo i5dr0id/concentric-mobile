@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Concentric Panel</title>
+    <meta name="description" content="A concentric ring clock for iPhone, as a home screen web app." />
+    <meta name="theme-color" content="#000000" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Panel" />
+    <link rel="manifest" href="panel.webmanifest" />
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icons/icon-180.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200..600&display=swap" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/panel.css" />
+  </head>
+  <body data-page="panel">
+    <main>
+      <header class="today-header">
+        <div class="weekday"></div>
+        <div class="full-date"></div>
+      </header>
+
+      <div class="dial-area">
+        <div class="dial">
+          <div class="rings"></div>
+          <div class="hour"></div>
+        </div>
+      </div>
+
+      <footer class="panel">
+        <section class="calendar">
+          <div class="calendar-title"></div>
+          <div class="calendar-grid"></div>
+        </section>
+
+        <section class="progress">
+          <div class="progress-row">
+            <span>DAY</span>
+            <div class="bar"><div class="bar-fill" data-progress="day"></div></div>
+            <span data-label="day"></span>
+          </div>
+          <div class="progress-row">
+            <span>YEAR</span>
+            <div class="bar"><div class="bar-fill" data-progress="year"></div></div>
+            <span data-label="year"></span>
+          </div>
+        </section>
+      </footer>
+    </main>
+
+    <nav class="nav" aria-label="Pages">
+      <a href="panel.html" data-page="panel">Panel</a>
+      <a href="clock.html" data-page="clock">Clock</a>
+      <a href="horizon.html" data-page="horizon">Horizon</a>
+    </nav>
+
+    <script src="js/concentric.js"></script>
+    <script src="js/panel.js"></script>
+  </body>
+</html>
