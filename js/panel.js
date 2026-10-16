@@ -62,11 +62,10 @@ function isoWeek(date) {
   return Math.ceil(((d - yearStart) / 864e5 + 1) / 7)
 }
 
-// The dial is as large as the space under the tiles allows.
-// Only its upper part is drawn fully, so it can run past the screen's sides.
-// What shows, from the top of the rings to where they fade out below the
-// center, is centered in that space.
-const VISIBLE_BELOW = 0.55 // share of the radius showing below the center
+// The dial is as large as the space under the tiles allows. Only its upper
+// part is drawn fully, so it can run past the screen's sides, and it sits low,
+// its center near the bottom so the top of the rings rises toward the tiles.
+const VISIBLE_BELOW = 0.32 // share of the radius showing below the center
 
 function fit() {
   const area = $('.dial-area').getBoundingClientRect()
@@ -74,7 +73,7 @@ function fit() {
   const outer = Math.min(area.width * 0.8, (area.height - 16) / visible)
   const dial = $('.dial')
   dial.style.scale = outer / OUTER_RADIUS
-  dial.style.top = `${(area.height - outer * visible) / 2 + outer}px`
+  dial.style.top = `${area.height - outer * VISIBLE_BELOW}px`
 }
 
 onResize(fit)
