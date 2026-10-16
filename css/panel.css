@@ -1,10 +1,9 @@
-/* A phone layout of its own: the date on top, a round dial read at 12 o'clock,
-   and two widget-sized tiles. The bottom is left clear for the Lock Screen's
-   flashlight, notifications and camera. */
+/* A phone layout of its own: the date and two widget-sized tiles on top, and
+   a round dial read at 12 o'clock filling the rest. */
 main {
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  padding: calc(var(--safe-top) + 18px) calc(var(--safe-right) + 20px) calc(var(--safe-bottom) + 76px)
+  grid-template-rows: auto auto 1fr;
+  padding: calc(var(--safe-top) + 18px) calc(var(--safe-right) + 20px) calc(var(--safe-bottom) + 16px)
     calc(var(--safe-left) + 20px);
 }
 
@@ -80,6 +79,7 @@ main {
 
 .tiles {
   display: grid;
+  margin-top: 22px;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }

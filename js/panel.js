@@ -1,6 +1,6 @@
-// Panel page, designed for a phone: today's date, a round dial read at
-// 12 o'clock with the hour in the middle, and two widget-sized tiles with the
-// month and day, month and year progress.
+// Panel page, designed for a phone: today's date and two widget-sized tiles
+// with the month and day, month and year progress, then a round dial read at
+// 12 o'clock with the hour in the middle.
 
 const { $, pad, createRing, setRing, sweep, everySecond, onResize, dayOfYear, daysInYear, renderCalendar } =
   Concentric
@@ -62,7 +62,7 @@ function isoWeek(date) {
   return Math.ceil(((d - yearStart) / 864e5 + 1) / 7)
 }
 
-// The dial is as large as the space between the date and the tiles allows.
+// The dial is as large as the space under the tiles allows.
 // Only its upper part is drawn fully, so it can run past the screen's sides.
 // What shows, from the top of the rings to where they fade out below the
 // center, is centered in that space.
@@ -71,7 +71,7 @@ const VISIBLE_BELOW = 0.55 // share of the radius showing below the center
 function fit() {
   const area = $('.dial-area').getBoundingClientRect()
   const visible = 1 + VISIBLE_BELOW
-  const outer = Math.min(area.width * 0.62, (area.height - 24) / visible)
+  const outer = Math.min(area.width * 0.8, (area.height - 16) / visible)
   const dial = $('.dial')
   dial.style.scale = outer / OUTER_RADIUS
   dial.style.top = `${(area.height - outer * visible) / 2 + outer}px`

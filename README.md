@@ -5,9 +5,9 @@ and JavaScript: no libraries, no build step.
 
 Three faces, each its own page and its own home screen app:
 
-- **Panel** (`panel.html`): today's date, a round dial read at 12 o'clock, and
-  two widget-sized tiles: the month, and day, month and year progress as
-  concentric rings.
+- **Panel** (`panel.html`): today's date over two widget-sized tiles, the
+  month and day, month and year progress as concentric rings, with a round
+  dial read at 12 o'clock filling the bottom half.
 - **Clock** (`clock.html`): just the dial, edge to edge.
 - **Horizon** (`horizon.html`): a large hour over two arcs, minutes above
   seconds.
@@ -22,9 +22,7 @@ The seconds ring sweeps every frame; the minute ring rolls to each new minute.
    first visit, and keeps the screen awake while it's open.
 4. Tap the clock to show the page switcher.
 
-Add each face you want separately; each one opens straight to itself. The
-bottom of the screen is left clear, where the Lock Screen puts its
-flashlight, notifications and camera.
+Add each face you want separately; each one opens straight to itself.
 
 iOS doesn't let web apps (or any app) set a live wallpaper, so this runs as an
 app you open, for a desk stand or a charging dock.
