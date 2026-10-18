@@ -3,6 +3,10 @@
 A concentric ring clock for iPhone, as a home screen web app. Plain HTML, CSS
 and JavaScript: no libraries, no build step.
 
+**Live:** https://i5dr0id.github.io/concentric-mobile/
+
+![Panel face](screenshots/panel.jpg)
+
 Three faces, each its own page and its own home screen app:
 
 - **Panel** (`panel.html`): today's date over two widget-sized tiles, the
